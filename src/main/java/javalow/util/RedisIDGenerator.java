@@ -86,6 +86,12 @@ public class RedisIDGenerator {
         throw new RuntimeException("Can not generate id!");
     }
 
+    /**
+     * 设置生成ID参数
+     *
+     * @param tab 生成id存放的序列
+     * @return
+     */
     private Long innerNext(String tab) {
         Calendar cal = Calendar.getInstance();
         //获取当前年份前两位
@@ -137,8 +143,7 @@ public class RedisIDGenerator {
             }
         }
 
-        public RedisIDGenerator buildIdGenerator()
-                throws IOException {
+        public RedisIDGenerator buildIdGenerator() throws IOException {
             loadConfig.loadScript();
             IdGeneratorBuilder idGenerator = RedisIDGenerator.builder();
             for (RedisScriptConfig conf : scriptConf) {
@@ -152,8 +157,7 @@ public class RedisIDGenerator {
          *
          * @throws IOException
          */
-        public void loadScript()
-                throws IOException {
+        public void loadScript() throws IOException {
             int index = 1;
             for (RedisScriptConfig conf : scriptConf) {
                 Jedis jedis = new Jedis(conf.getHost(), conf.getPort());

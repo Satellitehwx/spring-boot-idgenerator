@@ -20,3 +20,5 @@ string.format 为脚本最终拼接ID的方法 string.format('%02d', redis.call(
 RedisIDGenerator.innerNext() 方法中year和day参数是组成ID的重要参数可根据自己的业务自定义
 
 BuildIDFactory 类中 TAB_ORDER 常量为ID生成所在序列(同一序列当前面生成的ID格式固定修改lua文件生成ID格式不会改变续修改序列)
+
+SnowflakeIdGenerator  Twitter公司基于雪花算法生成ID 强依赖服务器时间，时间回拨可能导致ID冲突

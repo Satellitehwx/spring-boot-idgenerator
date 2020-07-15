@@ -31,6 +31,29 @@ public class RedisIDGenerator {
 
     static final Logger logger = LoggerFactory.getLogger(RedisIDGenerator.class);
 
+
+    /*private static String host;
+    private static String port;
+
+    public static String getPort() {
+        return port;
+    }
+
+    @Value("${redis.port}")
+    public void setPort(String port) {
+        RedisIDGenerator.port = port;
+    }
+
+    public static String getHost() {
+        return host;
+    }
+
+    @Value("${redis.hostName}")
+    public void setHost(String host) {
+        RedisIDGenerator.host = host;
+    }*/
+
+
     List<Pair<JedisPool, String>> jedisPoolList;
     int retryTimes;
     int index = 0;
@@ -141,6 +164,17 @@ public class RedisIDGenerator {
             } catch (IOException e) {
                 e.printStackTrace();
             }
+
+            /*String[] hostArray = host.split(",");
+            String[] portArray = port.split(",");
+            if (hostArray.length != portArray.length) {
+                throw new BusinessChanceException(ExceptionCodes.PRODUCT_140001);
+            }
+            for (int i = 0; i <= hostArray.length - 1; i++) {
+                String ip = hostArray[i];
+                String port = portArray[i];
+                scriptConf.add(new RedisScriptConfig(ip.trim(), (Integer.parseInt(port) == 0 ? 6379 : Integer.parseInt(port)), null));
+            }*/
         }
 
         public RedisIDGenerator buildIdGenerator() throws IOException {
